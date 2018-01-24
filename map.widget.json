@@ -1,0 +1,202 @@
+{
+    "template": "<div oc-lazy-load=\"{ files: [\n                       '/static/habpanel-map-widget/leaflet.css',\n                       '/static/habpanel-map-widget/leaflet.js',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.css',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.min.js',\n                       '/static/habpanel-map-widget/angular-simple-logger.min.js',\n                       '/static/habpanel-map-widget/ui-leaflet.min.js',\n                       '/static/habpanel-map-widget/map.controller.js'\n                     ],\n                     serie: true\n                   }\"\n     style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"\n     data-snap-ignore=\"true\">\n\n  <div ng-controller=\"MapController as vm\"\n       style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\">\n    <leaflet center=\"vm.center\"\n             markers=\"vm.markers\"\n             defaults=\"vm.defaults\"\n             legend=\"vm.legend\"\n             style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"></leaflet>\n  </div>\n</div>",
+    "name": "Map",
+    "author": "Yannick Schaus",
+    "description": "Displays a map with markers from openHAB Location objects positions",
+    "settings": [
+        {
+            "type": "heading",
+            "label": "Center",
+            "description": "Initial centering of the map"
+        },
+        {
+            "type": "string",
+            "id": "center_lng",
+            "label": "Longitude",
+            "description": "Longitude of the map center point",
+            "default": "2.3459"
+        },
+        {
+            "type": "string",
+            "id": "center_lat",
+            "label": "Latitude",
+            "description": "Latitude of the map center point",
+            "default": "48.8573"
+        },
+        {
+            "type": "number",
+            "id": "zoom",
+            "label": "Zoom level (max. 19)",
+            "default": "14",
+            "description": "Zoom level"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #1",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled1",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item1",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon1",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color1",
+            "label": "Marker color"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #2",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled2",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item2",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon2",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color2",
+            "label": "Marker color"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #3",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled3",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item3",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon3",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color3",
+            "label": "Marker color"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #4",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled4",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item4",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon4",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color4",
+            "label": "Marker color"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #5",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled5",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item5",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon5",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color5",
+            "label": "Marker color"
+        },
+        {
+            "type": "heading",
+            "label": "Marker #6",
+            "description": ""
+        },
+        {
+            "type": "checkbox",
+            "id": "enabled6",
+            "label": "Enabled",
+            "description": "Enable this marker"
+        },
+        {
+            "type": "item",
+            "id": "item6",
+            "label": "openHAB Item",
+            "description": "Item of type Location (or String with longitude,latitude)"
+        },
+        {
+            "type": "string",
+            "id": "icon6",
+            "label": "Marker icon",
+            "description": "Glyphicon to use in the marker (without the glyphicon- prefix, examples: star, user), see https://getbootstrap.com/docs/3.3/components/"
+        },
+        {
+            "type": "color",
+            "id": "color6",
+            "label": "Marker color"
+        }
+    ]
+}
