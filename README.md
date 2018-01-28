@@ -17,6 +17,17 @@ Alternatively you can download a ZIP file of the repository contents and extract
 
 Use the widget gallery in HABPanel to access this repository (you might be reading this in it right now!) and click the big green Import Widget button.
 
+### Updating
+
+If you used Git, go back to the `html/habpanel-map-widget` folder in your openHAB configuration where you cloned this repository, and pull the changes with Git:
+
+    $ git pull
+
+Or, re-download the ZIP and overwrite the contents.
+
+Next, go to the HABPanel custom widget list, open the widget's tile context menu, choose "Update..." and confirm.
+
+You might need to go over the widget's settings on your dashboards again, or remove them and re-add them.
 
 ## Configuration
 

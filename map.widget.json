@@ -1,5 +1,5 @@
 {
-    "template": "<div oc-lazy-load=\"{ files: [\n                       '/static/habpanel-map-widget/leaflet.css',\n                       '/static/habpanel-map-widget/leaflet.js',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.css',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.min.js',\n                       '/static/habpanel-map-widget/angular-simple-logger.min.js',\n                       '/static/habpanel-map-widget/ui-leaflet.min.js',\n                       '/static/habpanel-map-widget/map.controller.js'\n                     ],\n                     serie: true\n                   }\"\n     style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"\n     data-snap-ignore=\"true\">\n\n  <div ng-controller=\"MapController as vm\"\n       style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\">\n    <leaflet center=\"vm.center\"\n             markers=\"vm.markers\"\n             defaults=\"vm.defaults\"\n             legend=\"vm.legend\"\n             style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"></leaflet>\n  </div>\n</div>",
+    "template": "<div oc-lazy-load=\"{ files: [\n                       '/static/habpanel-map-widget/leaflet.css',\n                       '/static/habpanel-map-widget/leaflet.js',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.css',\n                       '/static/habpanel-map-widget/leaflet-vector-markers.min.js',\n                       '/static/habpanel-map-widget/angular-simple-logger.min.js',\n                       '/static/habpanel-map-widget/ui-leaflet.min.js',\n                       '/static/habpanel-map-widget/map.controller.js'\n                     ],\n                     serie: true\n                   }\"\n     style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"\n     data-snap-ignore=\"true\">\n\n  <div ng-controller=\"MapController as vm\"\n       style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\">\n    <leaflet center=\"vm.center\"\n             markers=\"vm.markers\"\n             paths=\"vm.paths\"\n             defaults=\"vm.defaults\"\n             legend=\"vm.legend\"\n             style=\"position: absolute; left: 0; top: 0; width: 100%; height: 100%\"></leaflet>\n  </div>\n</div>",
     "name": "Map",
     "author": "Yannick Schaus",
     "description": "Displays a map with markers from openHAB Location objects positions",
@@ -11,24 +11,24 @@
         },
         {
             "type": "string",
-            "id": "center_lng",
-            "label": "Longitude",
-            "description": "Longitude of the map center point",
-            "default": "2.3459"
+            "id": "center_lat",
+            "label": "Latitude",
+            "description": "Latitude of the map center point; optional, not used if markers are present",
+            "default": "48.8573"
         },
         {
             "type": "string",
-            "id": "center_lat",
-            "label": "Latitude",
-            "description": "Latitude of the map center point",
-            "default": "48.8573"
+            "id": "center_lng",
+            "label": "Longitude",
+            "description": "Longitude of the map center point; optional, not used if markers are present",
+            "default": "2.3459"
         },
         {
             "type": "number",
             "id": "zoom",
-            "label": "Zoom level (max. 19)",
+            "label": "Default Zoom Level (max. 19)",
             "default": "14",
-            "description": "Zoom level"
+            "description": "Default zoom level; the map will also be centered on the markers and zoom accordingly but not beyond this level."
         },
         {
             "type": "heading",
@@ -45,7 +45,7 @@
             "type": "item",
             "id": "item1",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -57,6 +57,18 @@
             "type": "color",
             "id": "color1",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy1",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem1",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         },
         {
             "type": "heading",
@@ -73,7 +85,7 @@
             "type": "item",
             "id": "item2",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -85,6 +97,18 @@
             "type": "color",
             "id": "color2",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy2",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem2",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         },
         {
             "type": "heading",
@@ -101,7 +125,7 @@
             "type": "item",
             "id": "item3",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -113,6 +137,18 @@
             "type": "color",
             "id": "color3",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy3",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem3",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         },
         {
             "type": "heading",
@@ -129,7 +165,7 @@
             "type": "item",
             "id": "item4",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -141,6 +177,18 @@
             "type": "color",
             "id": "color4",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy4",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem4",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         },
         {
             "type": "heading",
@@ -157,7 +205,7 @@
             "type": "item",
             "id": "item5",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -169,6 +217,18 @@
             "type": "color",
             "id": "color5",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy5",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem5",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         },
         {
             "type": "heading",
@@ -185,7 +245,7 @@
             "type": "item",
             "id": "item6",
             "label": "openHAB Item",
-            "description": "Item of type Location (or String with longitude,latitude)"
+            "description": "Item of type Location (or String with latitude,longitude)"
         },
         {
             "type": "string",
@@ -197,6 +257,18 @@
             "type": "color",
             "id": "color6",
             "label": "Marker color"
+        },
+        {
+            "type": "checkbox",
+            "id": "showaccuracy6",
+            "label": "Show Accuracy",
+            "description": "Display an accuracy circle (choose item below)"
+        },
+        {
+            "type": "item",
+            "id": "accuracyitem6",
+            "label": "Accuracy Item",
+            "description": "Item of type Number used for drawing an accuracy circle (radius in meters)"
         }
     ]
 }
