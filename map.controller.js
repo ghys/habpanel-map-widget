@@ -72,10 +72,16 @@
                                     icon: icon
                                 };
 
-                                if (accuracyItem && accuracyItem.type === 'Number' && parseFloat(accuracyItem.state) > 0) {
+                                if (accuracyItem && accuracyItem.type.includes('Number') && parseFloat(accuracyItem.state) > 0) {
+                                    var value = parseFloat(accuracyItem.state);
+                                    // Convert inches to meters if 'in' is present in the accuracy (supports GPSLogger).
+                                    if (accuracyItem.state.includes('in')) {
+                                        value /= 39.3701;
+                                    }
+
                                     vm.paths[item.name] = {
                                         type: 'circle',
-                                        radius: parseFloat(accuracyItem.state),
+                                        radius: value,
                                         latlngs: vm.markers[item.name],
                                         color: icon.markerColor,
                                         weight: 2
